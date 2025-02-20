@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+  <meta charset="UTF-8" />
+  <title>Bosch Uygulama Örneği (HTML, CSS, JS)</title>
+  <!-- STİL DOSYASI -->
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- ÜST KISIM / HEADER -->
+  <header class="header-container">
+    <div class="logo">BOSCH LOGO</div>
+    <div class="user-info">Hoş Geldiniz, Burak Bey!</div>
+  </header>
+
+  <!-- NAVBAR -->
+  <nav class="nav-bar">
+    <a href="#" id="link-home">Ana Sayfa</a>
+    <a href="#" id="link-servis-talep">Servis Talebi</a>
+    <a href="#" id="link-randevularim">Randevularım</a>
+    <a href="#" id="link-urunlerim">Ürünlerim</a>
+  </nav>
+
+  <!-- ANA SAYFA (HOME) -->
+  <section id="section-home" class="page-section">
+    <h1>Hoş Geldiniz, Burak Bey!</h1>
+    <div class="quick-actions">
+      <button onclick="showSection('section-servis-talep')" class="action-button">
+        Servis Talebi Oluştur
+      </button>
+      <button onclick="showSection('section-randevularim')" class="action-button">
+        Randevularım
+      </button>
+    </div>
+    
+    <!-- Bosch Yerli Üretim Baloncuğu -->
+    <div class="info-bubble">
+      <strong>Bilgi:</strong>
+      <h3>Bosch ürünleri Türkiye'de üretilmektedir. Bursa ve Manisa şehirlerindeki modern üretim tesislerimizle binlerce kişiye istihdam sağlıyor, yerli ekonomiye katkıda bulunuyoruz!</h3>
+    </div>
+    <div class="home-image-container">
+      <img src="D:/vs/images/urunlerim.png" alt="Ana Sayfa Görseli" class="home-image">
+    </div>
+  
+
+    <div class="notification-card">
+      <h3>Bulaşık Makinesi Servis Talebiniz</h3>
+      <p>Randevunuza 2 gün kaldı.</p>
+      <button onclick="showSection('section-randevularim')">Detayları Gör</button>
+    </div>
+    <div class="campaign-card">
+      <h2>Ek Garanti Fırsatı</h2>
+      <p>Buzdolabınızın garanti süresi bitiyor. Uzatmaya ne dersiniz?</p>
+      <button>İncele</button>
+    </div>
+  </section>
+
+  <!-- SERVİS TALEP FORMU -->
+  <section id="section-servis-talep" class="page-section hidden">
+    <h2>Servis Talebi Oluştur</h2>
+    <form id="servisTalepForm">
+      <label>Kategori:</label>
+      <select id="urunKategori">
+        <option value="Beyaz Eşya">Beyaz Eşya</option>
+        <option value="Küçük Ev Aletleri">Küçük Ev Aletleri</option>
+        <option value="Araba Servisi">Araba Servisi</option>
+      </select>
+
+      <label>Sorun Açıklaması:</label>
+      <textarea id="sorunAciklama" rows="3"
+                placeholder="Lütfen sorunu kısaca açıklayınız..."></textarea>
+
+      <!-- Tahmini fiyat - form gönderme sonrası gösterilecek -->
+      <div id="tahminiFiyatBox" class="price-approval-box hidden">
+        <p id="fiyatMetni">Tahmini Servis Ücreti: -</p>
+        <button type="button" id="btnOnayla" class="btn-confirm">
+          Onayla ve Talep Oluştur
+        </button>
+      </div>
+
+      <div id="talepOnayMesaji" class="onay-mesaji hidden">
+        <h3>Talebiniz Onaylandı!</h3>
+        <p>Randevu detayları için “Randevularım” sayfasına göz atabilirsiniz.</p>
+      </div>
+
+      <button type="submit" class="btn-primary">
+        Tahmini Fiyat ve Randevu
+      </button>
+    </form>
+  </section>
+
+  <section id="section-randevularim" class="page-section hidden">
+    <h2>Randevularım</h2>
+    <div id="randevularList">
+      <!-- Mevcut Randevular -->
+
+      <div class="randevu-card">
+        <h3>Çamaşır Makinesi Servisi</h3>
+        <p>Tarih: 12 Mayıs 10:00</p>
+        <p id="randevu-durum">Durum:Son Testler Yapılıyor</p>
+      <div class="progress-teknisyen-wrapper">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar-1"></div>
+        
+          <div class="progress-steps">
+            <span>Ürün Teslim Alındı</span>
+            <span>Teknisyen Atandı</span>
+            <span>Parça Bekleniyor</span>
+            <span>Son Testler Yapılıyor</span>
+            <span>Ürün Teslim Edilmeye Hazır</span>
+          </div>
+        </div>
+        <div class="teknisyen-info">
+          <h4>Teknisyen Bilgileri:</h4>
+          <img src="D:/vs/images/ali_celik.jpeg" alt="Teknisyen Ali Çelik" class="teknisyen-foto">
+          <p><strong>Ad:</strong> Ali Çelik</p>
+          <p><strong>Telefon:</strong> 0543 987 6543</p>
+          <p><strong>Uzmanlık:</strong> Çamaşır Makinesi Teknik Servisi</p>
+        </div>
+      </div>
+      </div>
+  
+      <div class="randevu-card">
+        <h3>Araç Bakım Randevusu</h3>
+        <p>Tarih: 22 Mayıs 14:00</p>
+        <p id="randevu-durum">Durum: Ürün Teslim Alındı</p>
+      <div class="progress-teknisyen-wrapper">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar-2"></div>
+
+        <div class="progress-steps">
+          <span>Ürün Teslim Alındı</span>
+          <span>Teknisyen Atandı</span>
+          <span>Parça Bekleniyor</span>
+          <span>Son Testler Yapılıyor</span>
+          <span>Ürün Teslim Edilmeye Hazır</span>
+        </div>
+      </div>
+        <div class="teknisyen-info">
+          <h4>Teknisyen Bilgileri:</h4>
+          <img src="D:/vs/images/arab.png" alt="Teknisyen Ahmet Kaya" class="teknisyen-foto">
+          <p><strong>Ad:</strong> Ahmet Kaya</p>
+          <p><strong>Telefon:</strong> 0554 123 7890</p>
+          <p><strong>Uzmanlık:</strong> Araç Teknik Servisi</p>
+        </div>
+      </div>
+    </div>
+  
+      <div class="randevu-card">
+        <h3>Buzdolabı Tamiri</h3>
+        <p>Tarih: 25 Mayıs 16:00</p>
+        <p id="randevu-durum">Durum: Ürün Teslim Edilmeye Hazır</p>
+      <div class="progress-teknisyen-wrapper">
+        <div class="progress-container">
+          <div class="progress-bar" id="progress-bar-3"></div>
+        <div class="progress-steps">
+          <span>Ürün Teslim Alındı</span>
+          <span>Teknisyen Atandı</span>
+          <span>Parça Bekleniyor</span>
+          <span>Son Testler Yapılıyor</span>
+          <span>Ürün Teslim Edilmeye Hazır</span>
+        </div>
+        </div>
+        <div class="teknisyen-info">
+          <h4>Teknisyen Bilgileri:</h4>
+          <img src="D:/vs/images/teknisyen2.jpeg" alt="Teknisyen Mehmet Yılmaz" class="teknisyen-foto">
+          <p><strong>Ad:</strong> Mehmet Yılmaz</p>
+          <p><strong>Telefon:</strong> 0555 123 4567</p>
+          <p><strong>Uzmanlık:</strong> Beyaz Eşya Teknik Servisi</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  
+  
+
+<!-- ÜRÜNLERİM -->
+<section id="section-urunlerim" class="page-section hidden">
+  <h1 class="main-heading">Ürünlerim</h1>
+
+  <div class="urun-kategorileri">
+    <!-- Beyaz Eşyalar -->
+    <div class="urun-kategori">
+      <h2>Beyaz Eşyalar</h2>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="D:/vs/images/buzdolabi.png" alt="Buzdolabı">
+          <h3>Buzdolabı</h3>
+          <p>Durum: Aktif</p>
+          <p>Garanti: 08.02.2025</p>
+          <button onclick="showRemoteControl('Buzdolabı')">Remote Kontrol</button>
+          <button onclick="showProductDetails('Buzdolabı')">Ürün Detayları</button>
+        </div>
+        <div class="product-card">
+          <img src="D:/vs/images/camasir.png" alt="Çamaşır Makinesi">
+          <h3>Çamaşır Makinesi</h3>
+          <p>Durum: Aktif</p>
+          <p>Garanti: 08.02.2029</p>
+          <button onclick="showRemoteControl('Çamaşır Makinesi')">Remote Kontrol</button>
+          <button onclick="showProductDetails('Çamaşır Makinesi')">Ürün Detayları</button>
+        </div>
+        <div class="product-card">
+          <img src="D:/vs/images/bulasik.png" alt="Bulaşık Makinesi">
+          <h3>Bulaşık Makinesi</h3>
+          <p>Durum: Aktif</p>
+          <p>Garanti: 18.05.2026</p>
+          <button onclick="showRemoteControl('Bulaşık Makinesi')">Remote Kontrol</button>
+          <button onclick="showProductDetails('Bulaşık Makinesi')">Ürün Detayları</button>
+        </div>
+      </div>
+    </div>
+
+    <!-- Araçlar -->
+    <div class="urun-kategori">
+      <h2>Araçlar</h2>
+      <div class="product-list">
+        <div class="product-card">
+          <img src="D:/vs/images/arac4.jpeg" alt="Araç 1">
+          <h3>Araç 1</h3>
+          <p>Durum: Aktif</p>
+          <button onclick="showProductDetails('Araç 1')">Ürün Detayları</button>
+        </div>
+        <div class="product-card">
+          <img src="D:/vs/images/arac3.jpeg" alt="Araç 2">
+          <h3>Araç 2</h3>
+          <p>Durum: Aktif</p>
+          <button onclick="showProductDetails('Araç 2')">Ürün Detayları</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+  <!-- ALT KISIM / FOOTER -->
+  <footer class="footer-container">
+    <p>© 2025 Bosch Uygulama Örneği</p>
+  </footer>
+
+  <!-- JAVASCRIPT DOSYASI (En sonda!) -->
+  <script src="script.js"></script>
+</body>
+</html>
